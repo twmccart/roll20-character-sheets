@@ -52,6 +52,28 @@ stealth
 streetwise
 thievery
 
+Powers:
+
+Powers are a repeating section, so they can be dragged into any order, added and
+deleted like the rest of the sheet, and are no longer capped at 100.
+
+Characters made before this change are migrated automatically the first time the
+sheet is opened: each filled power slot becomes a row. The old power-[number]-*
+attributes are left in place and are simply no longer shown, so nothing is lost,
+but note that they stop tracking the power - a macro elsewhere that refers to
+@{power-3-macro} will keep returning the value it had at migration time.
+
+To reference a power from a token action or macro, use its position in the list
+rather than a fixed number:
+
+%{CharacterName|repeating_powers_$0_power} // the first power
+%{CharacterName|repeating_powers_$1_power} // the second, and so on
+
+Each power picks where its attack, damage, dice count and dice size come from:
+one of the six weapons, or a flat value set on the power itself. The Weapon
+dropdown sets all four at once; choosing Custom exposes them individually, so a
+power can still draw its attack from one weapon and its damage from another.
+
 Updates:
 
 2014-04-23 14:27 :

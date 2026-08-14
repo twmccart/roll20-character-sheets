@@ -459,6 +459,54 @@
     margin: 0;
 }
 
+/* Powers are a repeating section: each row is one card, full width, since
+   Roll20 supplies its own row container, reorder handle and delete control. */
+.charsheet .sheet-wrapper .repitem .sheet-power-card {
+	width: 100%;
+	margin: 0 0 10px;
+	float: none;
+}
+
+/* The Weapon dropdown's Custom setting reveals the four per-source dropdowns.
+   CSS cannot read a select's value, so a sheet worker mirrors the choice into
+   .sheet-power-weapon-custom and we key off that instead. */
+.charsheet .sheet-wrapper input[type="checkbox"].sheet-power-weapon-custom {
+	display: none;
+	visibility: hidden;
+}
+
+.charsheet .sheet-wrapper .sheet-power-weapon-custom ~ .sheet-power-weapon-detail {
+	display: none;
+	visibility: hidden;
+}
+
+.charsheet .sheet-wrapper .sheet-power-weapon-custom:checked ~ .sheet-power-weapon-detail {
+	display: block;
+	visibility: visible;
+}
+
+/* Same trick for the roll button: a row with a custom macro rolls that instead
+   of the standard formula. */
+.charsheet .sheet-wrapper input[type="checkbox"].sheet-power-has-override {
+	display: none;
+	visibility: hidden;
+}
+
+.charsheet .sheet-wrapper .sheet-power-has-override ~ button.sheet-power-roll-override {
+	display: none;
+	visibility: hidden;
+}
+
+.charsheet .sheet-wrapper .sheet-power-has-override:checked ~ button.sheet-power-roll-default {
+	display: none;
+	visibility: hidden;
+}
+
+.charsheet .sheet-wrapper .sheet-power-has-override:checked ~ button.sheet-power-roll-override {
+	display: inline-block;
+	visibility: visible;
+}
+
 .charsheet .sheet-wrapper .sheet-power-card input[type="radio"] {
 	width: 20px;
 	display: inline-block;
